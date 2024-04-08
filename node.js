@@ -48,7 +48,7 @@ async function operator(proxies = [], targetPlatform, env) {
     if (args.hideExpire) {
       expires = undefined
     }
-    const date = expires ? new Date(expires * 1000).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, ' / ') : ''
+    const date = expires ? new Date(expires * 1000).toLocaleDateString('zh-CN', { year: 'numeric', month: 'numeric', day: 'numeric' }).replace(/\//g, ' / ') : ''
     let remainingDays
     try {
       remainingDays = getRmainingDays({
