@@ -48,7 +48,7 @@ async function operator(proxies = [], targetPlatform, env) {
     if (args.hideExpire) {
       expires = undefined
     }
-    const date = expires ? new Date(expires * 1000).toLocaleDateString() : ''
+    const date = expires ? new Date(expires * 1000).toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, ' / ') : ''
     let remainingDays
     try {
       remainingDays = getRmainingDays({
@@ -64,7 +64,7 @@ async function operator(proxies = [], targetPlatform, env) {
     const showT = flowTransfer(Math.abs(show))
     showT.value = show < 0 ? '-' + showT.value : showT.value
     const totalT = flowTransfer(total)
-    let name = ` ${showT.value} ${showT.unit}/${totalT.value} ${totalT.unit}`
+    let name = ` ${showT.value} ${showT.unit} / ${totalT.value} ${totalT.unit}`
     if (remainingDays) {
       name = `${name} | ${remainingDays} 天`
     }
